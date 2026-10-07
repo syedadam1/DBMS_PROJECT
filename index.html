@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Banking Management System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <h1 class="brand">Ledgerline<span>Bank admin</span></h1>
+    <nav id="nav">
+      <button data-view="dashboard" class="active">Dashboard</button>
+      <button data-view="customers">Customers</button>
+      <button data-view="accounts">Accounts</button>
+      <button data-view="transactions">Transactions</button>
+      <button data-view="loans">Loans</button>
+    </nav>
+  </aside>
+
+  <main>
+    <!-- DASHBOARD -->
+    <section id="view-dashboard" class="view active">
+      <h2>Dashboard</h2>
+      <div class="stats" id="stats"></div>
+      <h3>Recent transactions</h3>
+      <div class="table-wrap"><table id="recent-table"></table></div>
+    </section>
+
+    <!-- CUSTOMERS -->
+    <section id="view-customers" class="view">
+      <h2>Customers</h2>
+      <form id="customer-form" class="card row">
+        <label>Full name <input name="name" required></label>
+        <label>Phone <input name="phone" pattern="[0-9]{10}" title="10 digit number" required></label>
+        <label>City <input name="city" required></label>
+        <button class="primary">Add customer</button>
+      </form>
+      <input class="search" id="customer-search" placeholder="Search customers by name or city">
+      <div class="table-wrap"><table id="customer-table"></table></div>
+    </section>
+
+    <!-- ACCOUNTS -->
+    <section id="view-accounts" class="view">
+      <h2>Accounts</h2>
+      <form id="account-form" class="card row">
+        <label>Customer <select name="customer" id="account-customer" required></select></label>
+        <label>Account type
+          <select name="type"><option>Savings</option><option>Current</option><option>Fixed deposit</option></select>
+        </label>
+        <label>Opening balance <input name="balance" type="number" min="0" value="0" required></label>
+        <button class="primary">Open account</button>
+      </form>
+      <div class="table-wrap"><table id="account-table"></table></div>
+    </section>
+
+    <!-- TRANSACTIONS -->
+    <section id="view-transactions" class="view">
+      <h2>Transactions</h2>
+      <form id="txn-form" class="card row">
+        <label>Action
+          <select name="kind" id="txn-kind"><option>Deposit</option><option>Withdraw</option><option>Transfer</option></select>
+        </label>
+        <label>From / to account <select name="account" id="txn-account" required></select></label>
+        <label id="txn-target-wrap" hidden>Send to <select name="target" id="txn-target"></select></label>
+        <label>Amount (₹) <input name="amount" type="number" min="1" required></label>
+        <button class="primary">Confirm</button>
+      </form>
+      <div class="table-wrap"><table id="txn-table"></table></div>
+    </section>
+
+    <!-- LOANS -->
+    <section id="view-loans" class="view">
+      <h2>Loans</h2>
+      <div class="table-wrap"><table id="loan-table"></table></div>
+    </section>
+  </main>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
