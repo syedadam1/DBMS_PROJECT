@@ -1,84 +1,481 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Banking Management System</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NovaBank | Banking That Moves With You</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
 </head>
+
 <body>
-  <aside class="sidebar">
-    <h1 class="brand">Ledgerline<span>Bank admin</span></h1>
-    <nav id="nav">
-      <button data-view="dashboard" class="active">Dashboard</button>
-      <button data-view="customers">Customers</button>
-      <button data-view="accounts">Accounts</button>
-      <button data-view="transactions">Transactions</button>
-      <button data-view="loans">Loans</button>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+        <div class="logo-icon">
+            <span></span>
+            <span></span>
+        </div>
+
+        <span>NovaBank</span>
+    </div>
+
+
+    <nav class="nav-links">
+
+        <a href="#">Personal <span>⌄</span></a>
+        <a href="#">Business <span>⌄</span></a>
+        <a href="#services">Services <span>⌄</span></a>
+        <a href="#about">About <span>⌄</span></a>
+
     </nav>
-  </aside>
 
-  <main>
-    <!-- DASHBOARD -->
-    <section id="view-dashboard" class="view active">
-      <h2>Dashboard</h2>
-      <div class="stats" id="stats"></div>
-      <h3>Recent transactions</h3>
-      <div class="table-wrap"><table id="recent-table"></table></div>
-    </section>
 
-    <!-- CUSTOMERS -->
-    <section id="view-customers" class="view">
-      <h2>Customers</h2>
-      <form id="customer-form" class="card row">
-        <label>Full name <input name="name" required></label>
-        <label>Phone <input name="phone" pattern="[0-9]{10}" title="10 digit number" required></label>
-        <label>City <input name="city" required></label>
-        <button class="primary">Add customer</button>
-      </form>
-      <input class="search" id="customer-search" placeholder="Search customers by name or city">
-      <div class="table-wrap"><table id="customer-table"></table></div>
-    </section>
+    <div class="nav-actions">
 
-    <!-- ACCOUNTS -->
-    <section id="view-accounts" class="view">
-      <h2>Accounts</h2>
-      <form id="account-form" class="card row">
-        <label>Customer <select name="customer" id="account-customer" required></select></label>
-        <label>Account type
-          <select name="type"><option>Savings</option><option>Current</option><option>Fixed deposit</option></select>
-        </label>
-        <label>Opening balance <input name="balance" type="number" min="0" value="0" required></label>
-        <button class="primary">Open account</button>
-      </form>
-      <div class="table-wrap"><table id="account-table"></table></div>
-    </section>
+        <button class="search-btn">
+            <span></span>
+        </button>
 
-    <!-- TRANSACTIONS -->
-    <section id="view-transactions" class="view">
-      <h2>Transactions</h2>
-      <form id="txn-form" class="card row">
-        <label>Action
-          <select name="kind" id="txn-kind"><option>Deposit</option><option>Withdraw</option><option>Transfer</option></select>
-        </label>
-        <label>From / to account <select name="account" id="txn-account" required></select></label>
-        <label id="txn-target-wrap" hidden>Send to <select name="target" id="txn-target"></select></label>
-        <label>Amount (₹) <input name="amount" type="number" min="1" required></label>
-        <button class="primary">Confirm</button>
-      </form>
-      <div class="table-wrap"><table id="txn-table"></table></div>
-    </section>
+        <a href="login.html" class="login-btn">
+            Login
+        </a>
 
-    <!-- LOANS -->
-    <section id="view-loans" class="view">
-      <h2>Loans</h2>
-      <div class="table-wrap"><table id="loan-table"></table></div>
-    </section>
-  </main>
+        <a href="login.html" class="account-btn">
+            Open Account
+        </a>
 
-  <div id="toast" role="status" aria-live="polite"></div>
-  <script src="script.js"></script>
+    </div>
+
+
+    <button class="menu-btn" id="menuBtn">
+        ☰
+    </button>
+
+</header>
+
+
+<!-- ================= MOBILE MENU ================= -->
+
+<div class="mobile-menu" id="mobileMenu">
+
+    <a href="#">Personal</a>
+    <a href="#">Business</a>
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+
+    <a href="login.html" class="mobile-login">
+        Login
+    </a>
+
+</div>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <!-- Geometric background -->
+    <div class="hex hex-1"></div>
+    <div class="hex hex-2"></div>
+    <div class="hex hex-3"></div>
+    <div class="hex hex-4"></div>
+    <div class="hex hex-5"></div>
+    <div class="hex hex-6"></div>
+
+
+    <!-- LEFT SIDE -->
+
+    <div class="hero-content">
+
+        <p class="small-title">
+            THE FUTURE OF BANKING
+        </p>
+
+        <h1>
+            BANKING
+            <br>
+            THAT MOVES
+            <br>
+            <span>WITH YOU</span>
+        </h1>
+
+        <p class="hero-description">
+            Secure. Simple. Smarter banking
+            for a brighter tomorrow.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="login.html" class="primary-btn">
+                Get Started
+                <span>→</span>
+            </a>
+
+            <a href="#services" class="secondary-btn">
+                Explore Services
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- RIGHT SIDE IMAGE -->
+
+    <div class="hero-image">
+
+        <div class="image-overlay"></div>
+
+        <img
+            src="assets/bank.jpg"
+            alt="Modern bank building"
+        >
+
+        <div class="image-text">
+            <span>01</span>
+            <p>
+                Building stronger
+                <br>
+                financial futures.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SERVICES ================= -->
+
+<section class="services" id="services">
+
+    <div class="service-card">
+
+        <div class="service-icon">
+            💳
+        </div>
+
+        <div>
+            <h3>Accounts</h3>
+
+            <p>
+                Savings, current and
+                more for every need.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="service-card">
+
+        <div class="service-icon">
+            ↔
+        </div>
+
+        <div>
+            <h3>Transfer Money</h3>
+
+            <p>
+                Fast, secure and
+                anytime, anywhere.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="service-card">
+
+        <div class="service-icon">
+            ▤
+        </div>
+
+        <div>
+            <h3>Bill Payments</h3>
+
+            <p>
+                Pay all your bills
+                in one place.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="service-card">
+
+        <div class="service-icon">
+            📊
+        </div>
+
+        <div>
+            <h3>Investments</h3>
+
+            <p>
+                Grow your wealth
+                with trusted options.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= TRUST SECTION ================= -->
+
+<section class="trust">
+
+    <div class="trust-background"></div>
+
+    <div class="trust-content">
+
+        <div class="trust-intro">
+
+            <p class="small-title">
+                TRUSTED BY MILLIONS
+            </p>
+
+            <h2>
+                Banking built
+                <br>
+                around you.
+            </h2>
+
+            <p>
+                We combine technology, security
+                and people to deliver a better
+                banking experience.
+            </p>
+
+            <button class="white-btn">
+                Learn More →
+            </button>
+
+        </div>
+
+
+        <div class="stats">
+
+            <div class="stat">
+
+                <strong>50M+</strong>
+
+                <span>
+                    Customers
+                    <br>
+                    Worldwide
+                </span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <strong>99.9%</strong>
+
+                <span>
+                    Secure
+                    <br>
+                    Transactions
+                </span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <strong>24/7</strong>
+
+                <span>
+                    Customer
+                    <br>
+                    Support
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= WHY NOVABANK ================= -->
+
+<section class="why" id="about">
+
+    <div class="why-title">
+
+        <p class="small-title">
+            WHY NOVABANK?
+        </p>
+
+        <h2>
+            Banking designed
+            <br>
+            for real life.
+        </h2>
+
+        <div class="blue-line"></div>
+
+    </div>
+
+
+    <div class="why-cards">
+
+        <div class="why-card">
+
+            <div class="why-icon">
+                🛡
+            </div>
+
+            <h3>
+                Security First
+            </h3>
+
+            <p>
+                Your money and data
+                are always protected.
+            </p>
+
+        </div>
+
+
+        <div class="why-card">
+
+            <div class="why-icon">
+                👥
+            </div>
+
+            <h3>
+                Customer Focused
+            </h3>
+
+            <p>
+                Banking built around
+                your needs.
+            </p>
+
+        </div>
+
+
+        <div class="why-card">
+
+            <div class="why-icon">
+                ⚙
+            </div>
+
+            <h3>
+                Innovative Solutions
+            </h3>
+
+            <p>
+                Modern tools for
+                a smarter tomorrow.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CTA ================= -->
+
+<section class="cta">
+
+    <div class="cta-shape"></div>
+
+    <div class="cta-content">
+
+        <p class="small-title">
+            READY TO GET STARTED?
+        </p>
+
+        <h2>
+            Your money.
+            <br>
+            Your future.
+            <br>
+            <span>Your bank.</span>
+        </h2>
+
+        <a href="login.html" class="primary-btn">
+            Open Your Account →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-logo">
+        <div class="logo-icon">
+            <span></span>
+            <span></span>
+        </div>
+
+        NovaBank
+    </div>
+
+
+    <div class="footer-links">
+
+        <div>
+            <h4>Banking</h4>
+            <a href="#">Accounts</a>
+            <a href="#">Transfers</a>
+            <a href="#">Payments</a>
+        </div>
+
+        <div>
+            <h4>Company</h4>
+            <a href="#">About</a>
+            <a href="#">Careers</a>
+            <a href="#">Contact</a>
+        </div>
+
+        <div>
+            <h4>Support</h4>
+            <a href="#">Help Center</a>
+            <a href="#">Security</a>
+            <a href="#">Privacy</a>
+        </div>
+
+    </div>
+
+</footer>
+
+
+<div class="copyright">
+
+    © 2026 NovaBank. All rights reserved.
+
+</div>
+
+
+<script src="script.js"></script>
+
 </body>
 </html>
